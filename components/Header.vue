@@ -7,36 +7,22 @@
                     </a>
             </div>
             <div class="nav-center">
-                <ui-nav class="nav">
-                    <router-link to="/">Home</router-link>
-                    <router-link to="/about">About</router-link>
+                <nav class="nav">
+                    <NuxtLink to="/" active-class="text-primary">Home</NuxtLink>
                     <!-- Add more links as needed -->
-                </ui-nav>
+                </nav>
             </div>
             <div class="nav-right">
-                <ULink></ULink>
-                <route-link v-if="isLoggedIn" @click="toggleLogin">Logout</route-link>
-                <UButton>Login</UButton>
-                <a href=""></a>
+                <NuxtLink to="/login">Login</NuxtLink>
+                <NuxtLink to="/admin"></NuxtLink>
             </div>
         </nav>
-        <NuxtWelcome />
     </div>
 </template>
 
 <script>
 export default {
-    data() {
-        return {
-            isLoggedIn: false, // replace this with your actual authentication status
-        };
-    },
-    methods: {
-        toggleLogin() {
-            this.isLoggedIn = !this.isLoggedIn;
-            // replace this with your actual login/logout logic
-        },
-    },
+
 };
 </script>
 

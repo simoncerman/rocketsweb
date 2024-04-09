@@ -7,5 +7,14 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  modules: ['@nuxt/ui']
+  modules: ['@nuxt/ui', '@nuxtjs/supabase'],
+  supabase: {
+    url: process.env.NUXT_SUPABASE_URL,
+    key: process.env.NUXT_SUPABASE_KEY,
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/', '/about', '/register'],
+      }
+  }
 })

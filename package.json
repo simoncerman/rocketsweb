@@ -11,8 +11,19 @@
   },
   "dependencies": {
     "@nuxt/ui": "^2.15.1",
+    "@pnpm/types": "^9.4.2",
+    "@supabase/functions-js": "^2.2.2",
+    "@supabase/gotrue-js": "^2.62.2",
+    "@supabase/postgrest-js": "^1.15.0",
+    "@supabase/storage-js": "^2.5.5",
+    "@supabase/supabase-js": "^2.42.0",
     "nuxt": "^3.11.2",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/supabase": "^1.2.0",
+    "typescript": "^5.4.4",
+    "vue-tsc": "^1.8.27"
   }
 }
