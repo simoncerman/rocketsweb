@@ -25,8 +25,8 @@
     import type { FormError, FormSubmitEvent } from '#ui/types'
 
     const state = reactive({
-    email: undefined,
-    password: undefined
+        email: undefined,
+        password: undefined
     })
 
     const validate = (state: any): FormError[] => {
@@ -39,7 +39,7 @@
     async function onSubmit (event: FormSubmitEvent<any>) {
         if(state.email === undefined || state.password === undefined) return
         try {
-            const {data, error} = await useSupabaseClient().auth.signUp({
+            const {data, error} = await useSupabaseClient().auth.signInWithPassword({
                 email: state.email,
                 password: state.password
             })
@@ -54,7 +54,7 @@
                 return;
             }
             
-            navigateTo('/login');
+            navigateTo('/admin');
 
 
         } catch (error) {
