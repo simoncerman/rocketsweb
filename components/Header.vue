@@ -13,8 +13,8 @@
                 </nav>
             </div>
             <div class="nav-right">
-                <NuxtLink to="/login">Login</NuxtLink>
-                <NuxtLink to="/admin"></NuxtLink>
+                <NuxtLink v-if="user" to="/login">Login</NuxtLink>
+                <NuxtLink v-else to="/admin">Admin</NuxtLink>
             </div>
         </nav>
     </div>

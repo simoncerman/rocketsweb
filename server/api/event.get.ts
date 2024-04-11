@@ -1,11 +1,15 @@
-import { SupabaseClient } from "@supabase/supabase-js"
-// use supabase client to get data from event table
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = 'https://pckuttdrdjwouycfyisb.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const runtimeConfig = useRuntimeConfig().public;
+const supabase = createClient(supabaseUrl, runtimeConfig.supabase.key)
 
-export default defineEventHandler(async (event) => {
-    // return as response the event object
-    const data = await SupabaseClient.from('event').select('*')
+export default defineEventHandler(async (event) => {    
+    const data = await supabase.from('starfox-events')
+    .select('*')
+    .order('id', { ascending: false })
     return {
         statusCode: 200,
-        body: JSON.stringify(data)
+        body: JSON.stringify(data.data)
     }
 })
