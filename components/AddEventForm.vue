@@ -7,7 +7,7 @@
             <UInput v-model="state.date" name="date" class="mt-1" color="white" variant="outline" type="date" />
             <UContainer class="flex justify-center">
                 <UButton class="mt-2" type="submit" variant="outline">Add Event</UButton>
-                <UButton @click="" class="mt-2 ml-2" variant="outline">Fill with data</UButton>
+                <UButton @click="fillDatabaseWithData" class="mt-2 ml-2" variant="outline">Fill with data</UButton>
             </UContainer>
         </UForm>
     </div>
@@ -20,7 +20,7 @@
         date: undefined
     })
     async function fillDatabaseWithData() {
-        await $fetch('/api/event/fill', {
+        await $fetch('/api/fill', {
             method: 'POST'
         });
     }

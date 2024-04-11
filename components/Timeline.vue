@@ -39,7 +39,6 @@ export default {
     transition: .5s ease-in-out;
 }
 .data:hover{
-    background-color: #181818;
     color: white;
     border-radius: 5px;
     margin-left: 2rem;

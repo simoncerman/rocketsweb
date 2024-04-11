@@ -10,7 +10,7 @@
     })
   async function fetchData() {
       try {
-        const eventRaw = await $fetch('/api/event', {
+        const eventRaw = await $fetch('/api/events', {
           method: 'GET'
         });
         const event = JSON.parse(eventRaw.body);

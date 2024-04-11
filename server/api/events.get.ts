@@ -5,11 +5,20 @@ const runtimeConfig = useRuntimeConfig().public;
 const supabase = createClient(supabaseUrl, runtimeConfig.supabase.key)
 
 export default defineEventHandler(async (event) => {    
-    const data = await supabase.from('starfox-events')
+    const {data, error} = await supabase.from('starfox-events')
     .select('*')
-    .order('id', { ascending: false })
+    .order('id', { ascending: true })
+
+    if(error) { 
+        console.log(error)
+        return {
+            statusCode: 500,
+            body: "Error fetching data from database"
+        }
+    }
+
     return {
         statusCode: 200,
-        body: JSON.stringify(data.data)
+        body: JSON.stringify(data)
     }
 })
