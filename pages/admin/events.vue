@@ -2,14 +2,14 @@
     <div class="w-full">
       <h1 class="text-4xl text-center mt-4">Administrace</h1>
       <UContainer class="items-center flex align-middle text-center flex-col w-full">
-        <!-- Foreach event which will get from /api/event with method get will be displayed here -->
         <UList>
-          <UListItem v-for="event in events" :key="event.id">
-            <ULink :to="`/admin/events/${event.id}`">
-              <div class="flex justify-between">
+          <h2>Akce:</h2>
+          <UListItem v-for="event in state.events" :key="event.id">
+            <ULink class="mt-8 mb-8" :to="`/admin/events/${event.id}`">
+              <div class="flex justify-between text-left">
                 <div>
-                  <h2 class="text-xl">{{ event.name }}</h2>
-                  <p>{{ event.description }}</p>
+                  <h2 class="text-xl">{{ event.title }}</h2>
+                  <p>{{ event.date }}</p>
                 </div>
                 <div>
                   <UButton variant="link" icon="i-heroicons-chevron-right-20-solid" />
@@ -23,29 +23,22 @@
     </div>
   </template>
   
-  <script>
-  
-  export default {
-    async beforeCreate() {
-      const supabase = await useSupabaseClient();
-      const user = supabase.auth.getUser();
-  
-      if (!user) {
-        this.$router.push('/');
-      }
+  <script setup>
+    const state = reactive({
+        events: []
+    })
 
+    async function fetchData() {
       try {
         const eventRaw = await $fetch('/api/event', {
           method: 'GET'
         });
         const event = JSON.parse(eventRaw.body);
-
+        state.events = event;
       } catch (error) {
         console.error(error);
       }
-    },
-    async created() {
+    }
 
-    },
-  };
+    state.events = fetchData();
   </script>

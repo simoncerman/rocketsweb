@@ -1,3 +1,12 @@
+<script setup>
+    const supabase = useSupabaseClient();
+    const user = useSupabaseUser();
+    const logout = async () => {
+        console.log("called");
+        await supabase.auth.signOut();
+        router.push('/');
+    }
+</script>
 <template>
     <div>
         <nav class="navigation">
@@ -9,22 +18,22 @@
             <div class="nav-center">
                 <nav class="nav">
                     <NuxtLink to="/" active-class="text-primary">Home</NuxtLink>
+                    <NuxtLink to ="/starfox" active-class="text-primary">Starfox</NuxtLink>
                     <!-- Add more links as needed -->
                 </nav>
             </div>
             <div class="nav-right">
-                <NuxtLink v-if="user" to="/login">Login</NuxtLink>
-                <NuxtLink v-else to="/admin">Admin</NuxtLink>
+                <NuxtLink v-if="user" to="/admin/events">
+                    <UButton variant="primary">Admin</UButton>
+                </NuxtLink>
+                <NuxtLink v-else to="/login">Login</NuxtLink>
+                <UButton v-if="user" @click="logout" variant="outline">Logout</UButton>
             </div>
         </nav>
     </div>
 </template>
 
-<script>
-export default {
 
-};
-</script>
 
 <style scoped>
 .navigation {

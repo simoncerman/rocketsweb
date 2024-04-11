@@ -1,6 +1,6 @@
 <template>
     <div>
       <Header/>
-      <NuxtPage/>
+      <NuxtPage class="mt-16"/>
   </div>
 </template>
