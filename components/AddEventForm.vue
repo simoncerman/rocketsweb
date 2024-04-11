@@ -1,11 +1,14 @@
 <template>
-    <div class="mt-8">
+    <div class="mt-8 mb-8">
         <h2>Add Event</h2>
         <UForm :state="state" class="space-y-4" @submit="onSubmit">
             <UInput v-model="state.title" name="title" class="mt-1" color="white" variant="outline" placeholder="Title..." />
             <UTextarea v-model="state.description" name="description" class="mt-1" color="white" variant="outline" placeholder="Description..." />
             <UInput v-model="state.date" name="date" class="mt-1" color="white" variant="outline" type="date" />
-            <UButton class="mt-2" type="submit" variant="outline">Add Event</UButton>
+            <UContainer class="flex justify-center">
+                <UButton class="mt-2" type="submit" variant="outline">Add Event</UButton>
+                <UButton @click="" class="mt-2 ml-2" variant="outline">Fill with data</UButton>
+            </UContainer>
         </UForm>
     </div>
 </template>
@@ -16,6 +19,11 @@
         description: undefined,
         date: undefined
     })
+    async function fillDatabaseWithData() {
+        await $fetch('/api/event/fill', {
+            method: 'POST'
+        });
+    }
     async function onSubmit() {
         // use /api/event with method post to add new event
         await $fetch('/api/event', {
