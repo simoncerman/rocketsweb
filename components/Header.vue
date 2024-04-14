@@ -4,7 +4,7 @@
     const logout = async () => {
         console.log("called");
         await supabase.auth.signOut();
-        router.push('/');
+        navigateTo('/');
     }
 </script>
 <template>

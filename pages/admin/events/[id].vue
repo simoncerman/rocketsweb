@@ -2,5 +2,5 @@
 </script>
 
 <template>
-  <EditEventForm :id="$route.params.id"/>
+  <EditEventForm :id=""/>
 </template>

@@ -33,7 +33,7 @@
 
     const state = reactive({
         title: undefined,
-        description: undefined,
+        description: undefined, 
         date: undefined
     })
     await $fetch (`/api/event/${props.id}`, {      
@@ -51,16 +51,24 @@
     });
 
     async function editEvent() {
-        await $fetch(`/api/event/${props.id}`, {
+        const response =  await $fetch(`/api/event/${props.id}`, {
             method: 'PUT',
             body: JSON.stringify(state)
         });
+        console.log(response);
+        // route to /admin/events
+        await navigateTo('/admin/events', {
+            external: true
+        })    
     }
 
     async function removeEvent() {
         await $fetch(`/api/event/${props.id}`, {
             method: 'DELETE'
         });
+        await navigateTo('/admin/events', {
+            external: true
+        })    
     }
 </script>
 

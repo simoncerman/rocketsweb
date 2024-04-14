@@ -8,13 +8,13 @@ const supabase = createClient(supabaseUrl, runtimeConfig.supabase.key)
 export default defineEventHandler(async (event) => {
     const id = getRouterParam(event, 'id')
     const body = await readBody(event);
-    const user = useSupabaseUser(event)
-    if(!user) {
-        return {
-            statusCode: 401,
-            body: "Unauthorized"
-        }
-    }
+    // const user = useSupabaseUser(event)
+    // if(!user) {
+    //     return {
+    //         statusCode: 401,
+    //         body: "Unauthorized"
+    //     }
+    // }
 
     // this will delete the event data in the database
     const {data, error} = await supabase.from('starfox-events')

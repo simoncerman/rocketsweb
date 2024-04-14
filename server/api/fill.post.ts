@@ -10,13 +10,13 @@ export default defineEventHandler(async (event) => {
     .delete()
     .eq('project', 'starfox')
 
-    const user = useSupabaseUser(event)
-    if(!user) {
-        return {
-            statusCode: 401,
-            body: "Unauthorized"
-        }
-    }
+    // const user = useSupabaseUser(event)
+    // if(!user) {
+    //     return {
+    //         statusCode: 401,
+    //         body: "Unauthorized"
+    //     }
+    // }
     if(error) { console.log(error) 
         return {
             statusCode: 500,

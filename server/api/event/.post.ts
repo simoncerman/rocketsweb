@@ -6,14 +6,14 @@ const supabase = createClient(supabaseUrl, runtimeConfig.supabase.key)
 export default defineEventHandler(async (event) => {
     const body = await readBody(event);
     const { data, error } = await supabase
-    const user = useSupabaseUser(event)
-    if(!user) {
-        return {
-            statusCode: 401,
-            body: "Unauthorized"
-        }
-    }
-    
+    // const user = useSupabaseUser(event)
+    // if(!user) {
+    //     return {
+    //         statusCode: 401,
+    //         body: "Unauthorized"
+    //     }
+    // }
+
     await supabase.from('starfox-events')
     .insert([
         {

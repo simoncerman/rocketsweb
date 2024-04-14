@@ -23,6 +23,9 @@
         await $fetch('/api/fill', {
             method: 'POST'
         });
+        await navigateTo('/admin/events', {
+            external: true
+        })    
     }
     async function onSubmit() {
         // use /api/event with method post to add new event
@@ -30,6 +33,9 @@
             method: 'POST',
             body: JSON.stringify(state)
         });
+        await navigateTo('/admin/events', {
+            external: true
+        })    
 
 
         console.log('Form submitted!');
