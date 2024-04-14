@@ -39,7 +39,7 @@
     async function onSubmit (event: FormSubmitEvent<any>) {
         if(state.email === undefined || state.password === undefined) return
         try {
-            const {data, error} = await useSupabaseClient().auth.signInWithPassword({
+            const {data, error} = await useSupabaseClient().auth.signUp({
                 email: state.email,
                 password: state.password
             })

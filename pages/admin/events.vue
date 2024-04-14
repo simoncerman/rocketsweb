@@ -7,7 +7,7 @@
           <UList>
             <h2>Akce:</h2>
             <UListItem v-for="event in state.events" :key="event.id">
-              <ULink class="w-full" :to="`/admin/events/${event.id}`">
+              <UButton @click="isOpen = true" variant="primary" class="w-full text-center" :to="`/admin/events/${event.id}`">
                 <div class="flex justify-between text-left">
                   <div>
                     <h2 class="text-xl">{{ event.title }}</h2>
@@ -17,7 +17,7 @@
                     <UButton variant="link" class="hover:translate-x-2 duration-500" icon="i-heroicons-chevron-right-20-solid" />
                   </div>
                 </div>
-              </ULink>
+              </UButton>
             </UListItem>
           </UList>
           <AddEventForm />
@@ -27,12 +27,19 @@
         <h1 class="text-4xl text-center mt-4">Časová osa</h1>
         <Timeline :timelineEvents="state.events" />
       </UContainer>
+      <UModal v-model="isOpen">
+        <div class="p-4">
+          <NuxtPage/>
+        </div>
+      </UModal>
     </div>
   </div>
     
   </template>
   
   <script setup>
+    const isOpen = ref(false)
+    const event = ref(0)
     const state = reactive({
         events: []
     })
