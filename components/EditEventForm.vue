@@ -1,6 +1,6 @@
 <template>
     <div class="mt-2 mb-2">
-        <h1 class="text-center mb-4 text-2xl">Úprava akce</h1>
+        <h1 class="text-center mb-4 text-2xl">Event</h1>
         <!-- placeholder when waiting for data -->
         <div v-show="!hasData" class="space-y-4">
             <USkeleton class="h-4 w-[100%]" />
@@ -9,8 +9,8 @@
             <USkeleton class="h-4 w-[100%]" />
 
             <UContainer class="flex justify-center">
-                <UButton disabled class="mt-2 ml-1 mr-1" variant="solid" color="green">Upravit akci</UButton>
-                <UButton disabled class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Odstranit</UButton>
+                <UButton disabled class="mt-2 ml-1 mr-1" variant="solid" color="green">Edit</UButton>
+                <UButton disabled class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Remove</UButton>
             </UContainer>
         </div>
         <UForm :state="state" v-if="hasData" class="space-y-4" @submit="onSubmit">
@@ -18,8 +18,8 @@
             <UTextarea v-model="state.description" name="description" class="mt-1" color="white" variant="outline" placeholder="Description..." />
             <UInput v-model="state.date" name="date" class="mt-1" color="white" variant="outline" type="date" />
             <UContainer class="flex justify-center">
-                <UButton @click="editEvent" class="mt-2 ml-1 mr-1" variant="solid" color="green">Upravit akci</UButton>
-                <UButton @click="removeEvent" class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Odstranit</UButton>
+                <UButton @click="editEvent" class="mt-2 ml-1 mr-1" variant="solid" color="green">Edit</UButton>
+                <UButton @click="removeEvent" class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Remove</UButton>
             </UContainer>
         </UForm>
 

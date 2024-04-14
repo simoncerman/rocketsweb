@@ -1,7 +1,7 @@
 <template>
     <div>
         <UContainer class="w-1/3 h-full align-middle content-center login-container">
-            <h1 class="text-2xl align-middle text-center">Přihlásit se</h1>
+            <h1 class="text-2xl align-middle text-center">Login</h1>
             <UForm :state="state" class="space-y-4" @submit="onSubmit">
                 <UFormGroup label="Email" name="email">
                   <UInput v-model="state.email" />
@@ -9,12 +9,12 @@
             
                 <UFormGroup label="Password" name="password">
                   <UInput v-model="state.password" type="password" />                 
-                </UFormGroup>
+                </UFormGroup>   
             
                 <UButton type="submit">
-                  Přihlásit
+                  Login
                 </UButton>
-                <NuxtLink class="ml-3" to="/register">Registrovat</NuxtLink>
+                <NuxtLink class="ml-3" to="/register">Register</NuxtLink>
             </UForm>
             <UAlert id="alert" style="display: none"
             :close-button="{ icon: 'i-heroicons-x-mark-20-solid', color: 'gray', variant: 'link', padded: false }"

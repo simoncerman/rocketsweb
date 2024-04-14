@@ -1,5 +1,6 @@
 <template>
     <div class="element">
+      <h1 class="text-3xl">Events</h1>
       <ul class="timeline">
         <li v-for="event in timelineEvents" :key="event.id">
           <span></span>
@@ -31,6 +32,7 @@ export default {
 
 <style scoped>
 /* Add your custom styles here */
+
 .data{
     display: flex;
     flex-direction: column;
@@ -69,6 +71,9 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
+    background-color: #181818;
+    flex-direction: column;
 }
 .event-date {
     font-weight: bold;

@@ -2,12 +2,11 @@
   <div class="flex items-center align-middle justify-center">
     <div class="w-5/6 flex align-middle text-center">
       <UContainer class="w-1/2">
-        <h1 class="text-4xl text-center mt-4">Akce časové osy</h1>
+        <h1 class="text-4xl text-center mt-4 mb-4">Event timeline</h1>
         <UContainer class="items-center flex align-middle text-center flex-col w-full">
           <UList>
-            <h2>Akce:</h2>
             <UListItem v-for="event in state.events" :key="event.id">
-              <UButton @click="isOpen = true" variant="primary" class="w-full text-center" :to="`/admin/events/${event.id}`">
+              <UButton @click="isOpen = true" variant="outline" class="w-full text-center m-1" :to="`/admin/events/${event.id}`">
                 <div class="flex justify-between text-left">
                   <div>
                     <h2 class="text-xl">{{ event.title }}</h2>
@@ -24,7 +23,7 @@
         </UContainer>
       </UContainer>
       <UContainer class="w-1/2">
-        <h1 class="text-4xl text-center mt-4">Časová osa</h1>
+        <h1 class="text-4xl text-center mt-4 mb-4">Timeline</h1>
         <Timeline :timelineEvents="state.events" />
       </UContainer>
       <UModal v-model="isOpen">

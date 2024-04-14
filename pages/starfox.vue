@@ -52,8 +52,10 @@
   
       <UProgress :value="70" indicator />
       <p>Project Progress: 70% (as of April 14, 2024)</p>
-  
-      <a href="#" class="button">Stay Updated</a>
+      
+      <UContainer class="flex justify-center">
+        <UButton class="text-center flex" variant="outline">Stay Updated</UButton>
+      </UContainer>
     </div>
     <Timeline :timeline-events="state.events"/>
 
@@ -130,7 +132,9 @@ p {
 h2 {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+  margin-top: 3rem;
+
 }
 
 ul {
