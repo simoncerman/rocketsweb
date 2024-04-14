@@ -2,16 +2,7 @@
     <div class="mt-2 mb-2">
         <h1 class="text-center mb-4 text-2xl">Úprava akce</h1>
         <!-- placeholder when waiting for data -->
-        <UForm :state="state" v-if="hasData" class="space-y-4" @submit="onSubmit">
-            <UInput v-model="state.title" name="title" class="mt-1" color="white" variant="outline" placeholder="Title..." />
-            <UTextarea v-model="state.description" name="description" class="mt-1" color="white" variant="outline" placeholder="Description..." />
-            <UInput v-model="state.date" name="date" class="mt-1" color="white" variant="outline" type="date" />
-            <UContainer class="flex justify-center">
-                <UButton @click="editEvent" class="mt-2 ml-1 mr-1" variant="solid" color="green">Upravit akci</UButton>
-                <UButton @click="removeEvent" class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Odstranit</UButton>
-            </UContainer>
-        </UForm>
-        <div v-else class="space-y-4">
+        <div v-show="!hasData" class="space-y-4">
             <USkeleton class="h-4 w-[100%]" />
             <USkeleton class="h-4 w-[100%]" />
             <USkeleton class="h-4 w-[100%]" />
@@ -22,6 +13,16 @@
                 <UButton disabled class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Odstranit</UButton>
             </UContainer>
         </div>
+        <UForm :state="state" v-if="hasData" class="space-y-4" @submit="onSubmit">
+            <UInput v-model="state.title" name="title" class="mt-1" color="white" variant="outline" placeholder="Title..." />
+            <UTextarea v-model="state.description" name="description" class="mt-1" color="white" variant="outline" placeholder="Description..." />
+            <UInput v-model="state.date" name="date" class="mt-1" color="white" variant="outline" type="date" />
+            <UContainer class="flex justify-center">
+                <UButton @click="editEvent" class="mt-2 ml-1 mr-1" variant="solid" color="green">Upravit akci</UButton>
+                <UButton @click="removeEvent" class="mt-2 ml-1 mr-1" type="submit" variant="outline" color="orange">Odstranit</UButton>
+            </UContainer>
+        </UForm>
+
     </div>
 </template>
 
